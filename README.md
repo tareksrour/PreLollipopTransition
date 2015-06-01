@@ -4,11 +4,11 @@ Simple tool which help you to implement activity and fragment transition for pre
 ![prelollipopanimation](https://cloud.githubusercontent.com/assets/1386930/7614211/53ca12d8-f9d0-11e4-8b98-b6d98272f67d.gif)
 
 ## Download
-In your app build.gradle add
+Download this and import the module
 
 ```
 dependencies {
-    compile 'com.kogitune:pre-lollipop-activity-transition:1.0.0'
+    compile project':pre-lollipop-activity-transition'
 }
 ```
 
@@ -21,7 +21,7 @@ findViewById(R.id.imageView).setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         final Intent intent = new Intent(MainActivity.this, SubActivity.class);
-        ActivityTransitionLauncher.with(MainActivity.this).from(v).launch(intent);
+        ActivityTransitionLauncher.with(MainActivity.this).from(Pair.create(v,"viewname").launch(intent);
     }
 });
 ```
@@ -33,7 +33,7 @@ Receive intent in second activity.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
-        ActivityTransition.with(getIntent()).to(findViewById(R.id.sub_imageView)).start(savedInstanceState);
+        ActivityTransition.with(getIntent()).to(Pair.create(findViewById(R.id.sub_imageView),"viewname").start(savedInstanceState);
     }
 ```
 
@@ -44,7 +44,7 @@ If you want the exit animation, you can do like this.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub2);
-        exitTransition = ActivityTransition.with(getIntent()).to(findViewById(R.id.sub_imageView)).start(savedInstanceState);
+        exitTransition = ActivityTransition.with(getIntent()).to(Pair.create(findViewById(R.id.sub_imageView),"viewname").start(savedInstanceState);
     }
     @Override
     public void onBackPressed() {
